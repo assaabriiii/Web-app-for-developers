@@ -4,17 +4,17 @@ from django.http import HttpResponse
 
 projectList = [
     {
-        "id" : 1 ,
+        "id" : "1" ,
         "Title" : "SQL",
         "Description" : "Stopped for a While"
     },
     {
-        "id" : 2 ,
+        "id" : "2" ,
         "Title" : "CEH",
         "Description" : "Training Myself"
     },
     {
-        "id" : 3 ,
+        "id" : "3" ,
         "Title" : "Backend Programming",
         "Description" : "Learning it"
     }
@@ -30,4 +30,9 @@ def projects(request) :
     return render(request , 'project/project.html' , context)
 
 def projectPK(request , pk) :
-    return render(request , "project/singleproject.html")
+    key = None 
+    for i in projectList :
+        if i['id'] == pk :
+            key = i
+        
+    return render(request , "project/singleproject.html" , {"Key" : key})

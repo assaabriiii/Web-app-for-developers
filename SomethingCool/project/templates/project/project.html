@@ -17,7 +17,7 @@
 
 <ol>
     {% for item in projectList  %}
-    <li>{{ item.Title }}</li>
+    <li><a href={% url 'projectPK' item.id %}>{{ item.Title }}</a></li> 
     <p>Current Status : {{item.Description}} </p>
     {% empty %}
     <p>Nothing is Here 🫣</p>
