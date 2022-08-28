@@ -19,23 +19,23 @@
 </ol> {% endcomment %}
 
 
-<table style="border-collapse: collapse;">
+<table>
     <tr>
-        <th>ID</th>
         <th>Title</th>
         <th>Votes</th>
         <th>Ratio</th>
         <th></th>
-        <th>Link<th>
+        <th><th>
     </tr>
     {% for item in project  %}
     <tr>
-        <td>{{ item.id }}</td>
         <td>{{ item.title }}</td>
         <td>{{item.vote_total}}</td>
         <td>{{item.vote_ratio}}%</td>
         <td>{{item.create_date}}</td>
         <td><a href={% url 'projectPK' item.id %}>Link</a></td>
+        <td><a href={% url 'delete-project' item.id %}>Delete</a></td>
+        <td><a href={% url 'update-project' item.id %}>Edit</a></td>
         {% endfor %}
     </tr>
 </table>
