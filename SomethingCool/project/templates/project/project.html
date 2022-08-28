@@ -1,24 +1,18 @@
 {% include 'nav-bar.html' %}
 
 <p>Hello You are in The {{ page }} page 😶‍🌫️</p>
-
-{% if number > 10 %}
-<p>GT</p>
-
-{% elif number == 10%}
-<p>EQ</p>
-
-{% else %}
-<p>LT</p>
-
-{% endif %}
-
+<br>
 <h1>Hello This is Projects Page</h1>
+<hr>
 
 <ol>
-    {% for item in projectList  %}
-    <li><a href={% url 'projectPK' item.id %}>{{ item.Title }}</a></li> 
-    <p>Current Status : {{item.Description}} </p>
+    {% for item in project  %}
+    <li><a href={% url 'projectPK' item.id %}>{{ item.title }}</a></li> 
+    <p>Current Status : {{item.description}} </p>
+    <p>Votes : {{ item.vote_total }}</p>
+    <p>Ratio : {{ item.vote_ratio }}%</p>
+    <p>Create Date : {{ item.create_date }}</p>
+    <hr>
     {% empty %}
     <p>Nothing is Here 🫣</p>
     {% endfor %}

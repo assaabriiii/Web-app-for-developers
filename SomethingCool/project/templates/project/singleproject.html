@@ -5,8 +5,13 @@
 
 {% block content  %}
 
-<h1>{{ Key.Title }}</h1>
+<h1>{{ Key.title }}</h1>
 <br>
-<p>{{ Key.Description }}</p>
+<p>{{ Key.description }}</p>
+<hr>
+{% for tag in Key.tags.all  %}
+{% comment %} {% for tag in tags %} {% endcomment %}
+<spam style="border:2px solid grey; padding: 2px;">{{tag}}</spam>
+{% endfor %}
 
 {% endblock content %}
