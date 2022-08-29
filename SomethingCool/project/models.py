@@ -11,6 +11,8 @@ class project(models.Model):
     tags = models.ManyToManyField('Tag' , blank=True)
     vote_total = models.IntegerField(default=0 , null=True , blank=True)
     vote_ratio = models.IntegerField(default=0 , null=True , blank=True)
+    
+    fearured_img = models.ImageField(null=True , blank=True , default="default.jpg")
 
     create_date = models.DateTimeField(auto_now_add=True)
     

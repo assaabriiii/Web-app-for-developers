@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
         <title>FlatEarth</title>
+        <link rel="stylesheet" type="text/css" media="screen" href={% static 'styles/main.css' %}?{% now 'U' %}>
     </head>
     <body>
         <h1>Main Template</h1>
