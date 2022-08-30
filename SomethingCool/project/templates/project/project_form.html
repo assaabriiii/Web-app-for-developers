@@ -2,6 +2,13 @@
 {% block content %}
 <h1>Project Form</h1>
 
+<script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/wloilxuq.json"
+    trigger="hover"
+    style="left:650px;width:150px;height:150px">
+</lord-icon>
+
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
