@@ -8,5 +8,29 @@
     style="left:650px;width:150px;height:150px">
 </lord-icon> {% endcomment %}
 
-<h2><a href={% url 'create-project' %}>Add Project Here 👻</a></h2>
+{% comment %} <h2><a href={% url 'create-project' %}>Add Project Here 👻</a></h2> {% endcomment %}
+
+
+<header class="header">
+    <div class="container container--narrow">
+      <a href={% url 'projects' %} class="header__logo">
+        <img src={% static 'images/logo.svg' %} alt="DevSearch Logo" />
+      </a>
+      <nav class="header__nav">
+        <input type="checkbox" id="responsive-menu" />
+        <label for="responsive-menu" class="toggle-menu">
+          <span>Menu</span>
+          <div class="toggle-menu__lines"></div>
+        </label>
+        <ul class="header__menu">
+          <li class="header__menuItem"><a href="">Developers</a></li>
+          <li class="header__menuItem"><a href={% url 'projects' %}>Projects</a></li>
+          <li class="header__menuItem"><a href="">Inbox</a></li>
+          <li class="header__menuItem"><a href={% url 'create-project' %}>Add Project</a></li>
+          <li class="header__menuItem"><a href="" class="btn btn--sub">Login/Sign Up</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
 <hr>
