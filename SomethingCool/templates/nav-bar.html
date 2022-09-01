@@ -1,20 +1,9 @@
 {% load static %}
-{% comment %} <img src={% static 'images/logo.svg' %}> {% endcomment %}
-{% comment %} <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-<lord-icon
-    src="https://cdn.lordicon.com/drvsrrac.json"
-    trigger="hover"
-    colors="primary:#3a3347,secondary:#ebe6ef,tertiary:#b26836,quaternary:#2ca58d,quinary:#4bb3fd,senary:#ffc738"
-    style="left:650px;width:150px;height:150px">
-</lord-icon> {% endcomment %}
-
-{% comment %} <h2><a href={% url 'create-project' %}>Add Project Here 👻</a></h2> {% endcomment %}
-
 
 <header class="header">
     <div class="container container--narrow">
-      <a href={% url 'projects' %} class="header__logo">
-        <img src={% static 'images/logo.svg' %} alt="DevSearch Logo" />
+      <a href={% url 'profiles' %} class="header__logo">
+        <img src={% static 'images/logo.svg' %} alt="FuckSearch Logo" />
       </a>
       <nav class="header__nav">
         <input type="checkbox" id="responsive-menu" />
@@ -23,7 +12,7 @@
           <div class="toggle-menu__lines"></div>
         </label>
         <ul class="header__menu">
-          <li class="header__menuItem"><a href="">Developers</a></li>
+          <li class="header__menuItem"><a href={% url 'profiles' %}>Users</a></li>
           <li class="header__menuItem"><a href={% url 'projects' %}>Projects</a></li>
           <li class="header__menuItem"><a href="">Inbox</a></li>
           <li class="header__menuItem"><a href={% url 'create-project' %}>Add Project</a></li>

@@ -4,9 +4,6 @@ from .forms import ProjectForm
 from .models import project
 
 # Create your views here.
-def mainPage(request) :
-    return HttpResponse("The Main Page")
-
 def projects(request) :
     projects = project.objects.all()
     context = {'project' : projects} 
