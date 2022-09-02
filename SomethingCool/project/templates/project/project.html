@@ -34,7 +34,7 @@
               <img class="project__thumbnail" src={{item.fearured_img.url}} alt="project thumbnail" />
               <div class="card__body">
                 <h3 class="project__title">{{item.title}}</h3>
-                <p><a class="project__author" href={% url 'projectPK' item.id %}>{{item.owner.name}}</a></p>
+                <p><a class="project__author" href={% url 'user-profile' item.owner.id %}>{{item.owner.name}}</a></p>
                 <p class="project--rating">
                   <span style="font-weight: bold;">{{item.vote_ratio}}%</span> Posittive
                   Feedback ({{item.vote_total}} Vote{{item.vote_total|pluralize:"s"}})
