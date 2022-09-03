@@ -31,7 +31,7 @@
         </div>
         <div class="column column--2of3">
           <img class="singleProject__preview" src={{Key.fearured_img.url}} alt="portfolio thumbnail" />
-          <a href="profile.html" class="singleProject__developer">{{Key.owner.username}}</a>
+          <a href={% url 'user-profile' Key.owner.id %} class="singleProject__developer">@{{Key.owner.username}}</a>
           <h2 class="singleProject__title">{{Key.title}}</h2>
           <h3 class="singleProject__subtitle">About the Project</h3>
           <div class="singleProject__info">
