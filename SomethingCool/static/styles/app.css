@@ -655,15 +655,15 @@ img {
 
 .auth::after {
   z-index: -1;
-  opacity: 0.1;
+  opacity: 1;
   content: '';
-  display: block;
-  position: fixed;
+  display:inline;
+  position:fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  background: url(../images/pattern.jpg);
+  background: url(../images/background.jpg);
 }
 
 .auth > .card {
