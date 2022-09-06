@@ -31,6 +31,7 @@ def login_user(request) :
         # redirect logined user to profiles page 
         if user is not None :
             login(request , user)
+            messages.info(request , "Welcome Back !")
             return redirect('profiles')
         else :
             messages.error(request , message="Whopsie You Did Something Wrong 😳")
@@ -40,7 +41,7 @@ def login_user(request) :
 
 def logout_user(request) :
     logout(request)
-    messages.error(request , message="Logged out fortunatly 🥹")
+    messages.info(request , message="Logged out")
     return redirect('login')
 
 
@@ -61,7 +62,7 @@ def register_user(request) :
             login(request , user)
             return redirect('profiles')
         else :
-            messages.error(request , "Error :<")
+            messages.error(request , "Can't make your account right now please try again !")
         
     
     context = {'page' : page , 'form' : form}
