@@ -1,5 +1,6 @@
 from django.shortcuts import render , redirect
 from .models import Profile
+from .models import Skill
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -78,5 +79,19 @@ def profiles(request) :
 
 def user_profile(request , pk) :
     user = Profile.objects.get(id=pk)
-    context ={'user' : user}
+    topSkill = user.skill_set.exclude(description__exact="")
+    otherSkill = user.skill_set.filter(description__exact="")
+     
+    context ={'user' : user , "topskill" : topSkill , "otherskill" : otherSkill}
+    # Check user profile for fixing this page
     return render(request , 'users/user-profile.html' , context)
+
+@login_required(login_url='login')
+def user_account(request ) :
+    user = request.user.profile
+    
+    Skill = user.skill_set.all()
+   
+    
+    context = {'profile' : user , "skills" : Skill}
+    return render(request , 'users/account.html' , context)

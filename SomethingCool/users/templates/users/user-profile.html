@@ -52,7 +52,7 @@
           <div class="devInfo">
             <h3 class="devInfo__title">Skills</h3>
             <div class="devInfo__skills">
-                {% for skill in user.skill_set.all  %}
+                {% for skill in topskill  %}
               <div class="devSkill">
                 <h4 class="devSkill__title">{{skill}} </h4>
                 <p class="devSkill__info">
@@ -63,7 +63,7 @@
 
               <h3 class="devInfo__subtitle">Other Skills</h3>
               <div class="devInfo__otherSkills">
-                {% for skill in user.skill_set.all %}
+                {% for skill in otherskill %}
                 <span class="tag tag--pill tag--sub tag--lg">
                   <small>{{skill}}</small>
                 </span>
