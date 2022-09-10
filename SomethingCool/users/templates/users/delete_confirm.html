@@ -1,6 +1,9 @@
 {% extends 'main.html' %}
 
 {% block content %}
+{
+
+
 
 <main class="formPage my-xl">
     <div class="content-box">
@@ -11,7 +14,7 @@
             <form class="form" action="" method="POST">
 
                 {% csrf_token %}
-                    <p style="text-align:left;">Are You Sure That You Want to Delete ( {{object}} ) project ?</p>
+                    <p style="text-align:left;">Are You Sure That You Want to Delete ( {{object}} ) skill ?</p>
                     <a class="btn btn--sub btn--lg  my-md" href={% url 'account' %}>Go Back</a>
          
                 <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
