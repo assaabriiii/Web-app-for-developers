@@ -80,7 +80,7 @@ def profiles(request) :
     
     
     Profiles = Profile.objects.filter(name__icontains=search_result)
-    context = {'profiles' : Profiles}
+    context = {'profiles' : Profiles , 'search_result' : search_result}
     return render(request , 'users/profiles.html' , context)
 
 

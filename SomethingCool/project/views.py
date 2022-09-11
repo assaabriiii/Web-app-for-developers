@@ -7,8 +7,13 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def projects(request) :
-    projects = project.objects.all()
-    context = {'project' : projects} 
+    search_result = ""
+    
+    if request.GET.get('search_result') :
+        search_result = request.GET.get('search_result') 
+    
+    projects = project.objects.filter(title__icontains=search_result)
+    context = {'project' : projects , 'search_result' : search_result}  
     return render(request , 'project/project.html' , context)
 
 def projectPK(request , pk) :
