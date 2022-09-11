@@ -72,7 +72,14 @@ def register_user(request) :
 
 
 def profiles(request) :
-    Profiles = Profile.objects.all()
+    search_result = ''
+    
+    if request.GET.get('search_result') :
+        search_result = request.GET.get('search_result')
+        print(search_result)
+    
+    
+    Profiles = Profile.objects.filter(name__icontains=search_result)
     context = {'profiles' : Profiles}
     return render(request , 'users/profiles.html' , context)
 
