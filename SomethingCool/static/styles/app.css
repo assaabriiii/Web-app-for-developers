@@ -1,9 +1,10 @@
 :root {
-  --color-sub: #7676f9;
+  --color-sub: #3a3a95;
 }
 
 .btn--sub {
-  background-color: var(--color-sub-light);
+  /* background-color: var(--color-sub-light); */
+  background-color: rgb(234, 145, 12);
 }
 
 .card {
