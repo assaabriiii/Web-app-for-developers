@@ -23,6 +23,9 @@ class project(models.Model):
     def __str__(self) :
         return self.title 
         
+    class Meta:
+        ordering = ['create_date'] # Adding - at the first will make it oposite
+        
 class review(models.Model) :
     vote_type = (
         ('up' , 'up vote'),
