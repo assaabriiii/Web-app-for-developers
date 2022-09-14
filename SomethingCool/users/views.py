@@ -4,7 +4,7 @@ from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm 
+import requests
 from .forms import CustomUserCreationForm , ProfileForm, SkillsForm
 from .utils import paginator_users, search_profile
 # Create your views here.
@@ -71,12 +71,16 @@ def register_user(request) :
 
 
 def profiles(request) :
+    cat_fact = requests.get('https://meowfacts.herokuapp.com/')
+    k = cat_fact.json()
+    k = k['data']
+    k = str(k).strip("[].'")
     search_result = ''
     
     Profiles , search_result = search_profile(request)
     customRange , Profiles = paginator_users(request , Profiles , 6)
     
-    context = {'profiles' : Profiles , 'search_result' : search_result , 'customRange' : customRange}
+    context = {'profiles' : Profiles , 'search_result' : search_result , 'customRange' : customRange , 'cat_fact' : k}
     return render(request , 'users/profiles.html' , context)
 
 
@@ -85,7 +89,7 @@ def user_profile(request , pk) :
     topSkill = user.skill_set.exclude(description__exact="")
     otherSkill = user.skill_set.filter(description__exact="")
      
-    context ={'user' : user , "topskill" : topSkill , "otherskill" : otherSkill}
+    context ={'user' : user , "topskill" : topSkill , "otherskill" : otherSkill }
     # Check user profile for fixing this page
     return render(request , 'users/user-profile.html' , context)
 
