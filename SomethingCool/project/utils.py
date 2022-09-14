@@ -7,7 +7,6 @@ def paginator_project(request , projects , result ) :
     
     # paginating and fixing if user enters a page which is not included in the range 
     page = request.GET.get('page')
-    result = 6
     paginator = Paginator(projects , result)
     try :
         projects = paginator.page(page)
