@@ -3,17 +3,21 @@ from .forms import ProjectForm
 from .models import project 
 from django.contrib.auth.decorators import login_required
 from .utils import project_search , paginator_project
-
+import requests
 
 # Create your views here.
 def projects(request) :
     search_result = ""
+    cat_fact = requests.get('https://meowfacts.herokuapp.com/')
+    k = cat_fact.json()
+    k = k['data']
+    k = str(k).strip("[].'")
     
     projects , search_result = project_search(request)
     customRange , projects = paginator_project(request , projects , 6)
         
     
-    context = {'project' : projects , 'search_result' : search_result , "customRange" : customRange }  
+    context = {'project' : projects , 'search_result' : search_result , "customRange" : customRange , 'cat_fact' : k}  
     return render(request , 'project/project.html' , context)
 
 def projectPK(request , pk) :
