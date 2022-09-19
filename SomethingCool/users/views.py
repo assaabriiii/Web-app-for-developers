@@ -71,16 +71,12 @@ def register_user(request) :
 
 
 def profiles(request) :
-    cat_fact = requests.get('https://meowfacts.herokuapp.com/')
-    k = cat_fact.json()
-    k = k['data']
-    k = str(k).strip("[].'")
     search_result = ''
     
     Profiles , search_result = search_profile(request)
     customRange , Profiles = paginator_users(request , Profiles , 6)
     
-    context = {'profiles' : Profiles , 'search_result' : search_result , 'customRange' : customRange , 'cat_fact' : k}
+    context = {'profiles' : Profiles , 'search_result' : search_result , 'customRange' : customRange }
     return render(request , 'users/profiles.html' , context)
 
 
