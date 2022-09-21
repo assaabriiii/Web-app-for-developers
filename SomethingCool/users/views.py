@@ -9,6 +9,8 @@ from .forms import CustomUserCreationForm , ProfileForm, SkillsForm
 from .utils import paginator_users, search_profile
 # Create your views here.
 
+# Notes : working on reviews 
+
 def login_user(request) :
     page = 'login'
     
