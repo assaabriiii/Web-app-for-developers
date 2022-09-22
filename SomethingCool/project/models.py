@@ -27,15 +27,15 @@ class project(models.Model):
         ordering = ['create_date'] # Adding - at the first will make it oposite
         
 class review(models.Model) :
-    vote_type = (
+    VOTE_TYPE = (
         ('up' , 'up vote'),
-        ('down' , 'down vote')
+        ('down' , 'down vote'),
     )
     owner = models.ForeignKey(Profile , on_delete=models.CASCADE , null=True  )
     Project = models.ForeignKey( project ,on_delete=models.CASCADE)
     id = models.UUIDField(default=uuid.uuid4 , unique=True , primary_key=True , editable=False)
     body = models.TextField(blank=True , null=True)
-    value = models.CharField(max_length=200 , choices=vote_type)
+    value = models.CharField(max_length=200 , choices=VOTE_TYPE)
     create_date = models.DateTimeField(auto_now_add=True)
     
     class Meta :
