@@ -44,13 +44,15 @@
               {{Key.vote_ratio}}% Postitive Feedback ({{Key.vote_total}} Vote{{Key.vote_total|pluralize:"s"}})
             </h5>
 
-            <form class="form" action="#" method="POST">
+            <form class="form" action='{% url 'projectPK' Key.id %}' method="POST">
               <!-- Textarea -->
+              {% csrf_token %}
+              {% for field in form  %}
               <div class="form__field">
-                <label for="formInput#textarea">Comments: </label>
-                <textarea class="input input--textarea" name="message" id="formInput#textarea"
-                  placeholder="Write your comments here..."></textarea>
+                <label for="formInput#textarea">{{field.label}}: </label>
+                {{field}}
               </div>
+              {% endfor %}
               <input class="btn btn--sub btn--lg" type="submit" value="Comments" />
             </form>
             <div class="commentList">
@@ -64,7 +66,7 @@
                 <div class="comment__details">
                   <a href={% url 'user-profile' review.owner.id %} class="comment__author">{{review.owner.name}}</a>
                   <p class="comment__info">
-                    {{review.body}}
+                    {{review.body|linebreaksbr}}
                   </p>
                 </div>
               </div>
