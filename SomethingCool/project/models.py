@@ -24,7 +24,23 @@ class project(models.Model):
         return self.title 
         
     class Meta:
-        ordering = ['create_date'] # Adding - at the first will make it oposite
+        ordering = ['-vote_ratio' , '-vote_total' , 'title'] # Remove - at the first will make it oposite
+    
+    @property
+    def getVoteCount(self) :
+        reviews = self.review_set.all()
+        upVotes = reviews.filter(value='up').count()
+        totalVotes = reviews.count()
+        
+        ratio = (upVotes / totalVotes) * 100 
+        
+        self.vote_total = totalVotes
+        self.vote_ratio = ratio
+        
+       
+        
+        self.save()
+        
         
 class review(models.Model) :
     VOTE_TYPE = (

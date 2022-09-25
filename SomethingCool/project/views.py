@@ -27,7 +27,10 @@ def projectPK(request , pk) :
         review.Project = projectObj
         review.owner = request.user.profile
         review.save()
-        # redirecct and counts 
+        
+        projectObj.getVoteCount
+        
+        redirect('projectPK' , pk=projectObj.id)
          
     context = {"Key" : projectObj , "form" : form}
     return render(request , "project/singleproject.html" , context) 
