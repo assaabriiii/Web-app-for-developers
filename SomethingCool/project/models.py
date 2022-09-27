@@ -27,6 +27,11 @@ class project(models.Model):
         ordering = ['-vote_ratio' , '-vote_total' , 'title'] # Remove - at the first will make it oposite
     
     @property
+    def reviewers(self) :
+        quaryset = self.review_set.all().values_list("owner__id" , flat=True)
+        
+    
+    @property
     def getVoteCount(self) :
         reviews = self.review_set.all()
         upVotes = reviews.filter(value='up').count()
