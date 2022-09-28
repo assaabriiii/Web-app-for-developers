@@ -4,9 +4,9 @@ from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-import requests
 from .forms import CustomUserCreationForm , ProfileForm, SkillsForm
 from .utils import paginator_users, search_profile
+from .single_yt import *
 # Create your views here.
 
 # Notes : working on reviews 
@@ -166,3 +166,25 @@ def delete_skill(request , pk ) :
     return render(request , 'users/delete_confirm.html' , context)
         
     
+    
+# Feature 
+#
+# 
+# 
+# 
+# 
+# 
+# 
+
+def download(request) :
+    search_link=""
+    if request.GET.get("search_link") :
+        print("Got the link")
+        url = request.GET.get('search_link')
+        print(url)
+        
+    else :
+        print("Didn't recived the link")
+        
+    context = {'search_link' : search_link}
+    return render(request , 'users/youtube.html' , context)

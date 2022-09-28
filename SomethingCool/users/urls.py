@@ -11,5 +11,6 @@ urlpatterns = [
     path("edit-account/" , views.edit_profile , name="edit-account"),
     path("create-skill/" , views.create_skill , name="create-skill"),
     path("edit-skill/<str:pk>/" , views.edit_skill , name="edit-skill"),
-    path("delete-skill/<str:pk>/" , views.delete_skill , name="delete-skill")
+    path("delete-skill/<str:pk>/" , views.delete_skill , name="delete-skill"),
+    path("youtube/" , views.download , name="youtube")
 ]
