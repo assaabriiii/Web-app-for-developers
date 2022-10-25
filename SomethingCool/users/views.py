@@ -195,5 +195,8 @@ def inbox(request) :
     messageRequests = profile.messages.all() 
     unreadCount = messageRequests.filter(is_read=False).count()
     context = {'messageRequest' : messageRequests , 'unreadCount' : unreadCount }
+    print("+++++++++++++++++++++++++++++++++++++++++")
+    print(messageRequests)
+    print("+++++++++++++++++++++++++++++++++++++++++")
     return render(request , 'users/inbox.html' , context )
     

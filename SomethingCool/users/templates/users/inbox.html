@@ -1,14 +1,14 @@
 
  {% extends 'main.html' %}
  {% block content %}
-  <!-- Main Section -->
-  <main class="inbox my-xl">
+   <!-- Main Section -->
+   <main class="inbox my-xl">
     <div class="content-box">
       <h3 class="inbox__title">New Messages(<span>{{unreadCount}}</span>)</h3>
-
       <ul class="messages">
-        {% for message in messageRequests  %}
-        <li class="message message--unread">
+        
+        {% for message in messageRequest  %}
+        <li class="message">
           <a href="message.html">
             <span class="message__author">{{message.name}}</span>
             <span class="message__subject">{{message.subject}}</span>
@@ -16,8 +16,6 @@
           </a>
         </li>
         {% endfor %}
-
-
       </ul>
     </div>
   </main>
