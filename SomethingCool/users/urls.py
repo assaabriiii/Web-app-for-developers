@@ -13,5 +13,7 @@ urlpatterns = [
     path("edit-skill/<str:pk>/" , views.edit_skill , name="edit-skill"),
     path("delete-skill/<str:pk>/" , views.delete_skill , name="delete-skill"),
     path("youtube/" , views.download , name="youtube"), 
-    path("inbox/" , views.inbox , name="inbox")
+    path("inbox/" , views.inbox , name="inbox"),
+    path("message/<str:pk>" , views.viewMessage , name="message"),
+    path("send-message/<str:pk>/" , views.createMessage , name="create-message" )
 ]

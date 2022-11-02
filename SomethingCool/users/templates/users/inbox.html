@@ -8,8 +8,12 @@
       <ul class="messages">
         
         {% for message in messageRequest  %}
-        <li class="message">
-          <a href="message.html">
+        {% if message.is_read == False %}
+        <li class="message message--unread">
+          {% else %}
+          <li class="message">
+          {% endif %}
+          <a href={% url 'message' message.id %}>
             <span class="message__author">{{message.name}}</span>
             <span class="message__subject">{{message.subject}}</span>
             <span class="message__date">{{message.created}}</span>

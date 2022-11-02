@@ -4,7 +4,7 @@ from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import CustomUserCreationForm , ProfileForm, SkillsForm
+from .forms import CustomUserCreationForm , ProfileForm, SkillsForm , MessageForm
 from .utils import paginator_users, search_profile
 from .single_yt import *
 # Create your views here.
@@ -199,4 +199,40 @@ def inbox(request) :
     print(messageRequests)
     print("+++++++++++++++++++++++++++++++++++++++++")
     return render(request , 'users/inbox.html' , context )
+
+@login_required(login_url="login")
+def viewMessage(request , pk): 
+    profile = request.user.profile
+    message = profile.messages.get(id=pk)
+    if message.is_read == False : 
+        message.is_read = True 
+        message.save()
+    context = {"message" : message}
+    return render(request , 'users/message.html' , context)
     
+
+def createMessage(request, pk) :
+    recipient = Profile.objects.get(id=pk)
+    form = MessageForm()
+    try : 
+        sender = request.user.profile
+    except :
+        sender = None 
+    
+    if request.method == "POST" : 
+        form = MessageForm(request.POST)
+        if form.is_valid() : 
+            message = form.save(commit=False)
+            message.sender = sender
+            message.recipient = recipient
+            
+            if sender : 
+                message.name = sender.name 
+                message.email = sender.email
+            message.save()
+            
+            messages.success(request , "Your message has been sent")
+            return redirect('user-profile' , pk=recipient.id)
+    
+    context = {'recipient' : recipient , 'form' : form}
+    return render(request , 'users/message_template.html' , context)
