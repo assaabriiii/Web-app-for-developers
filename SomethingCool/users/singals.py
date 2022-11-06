@@ -2,6 +2,8 @@ from django.db.models.signals import post_save,post_delete
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 from .models import Profile
+from django.core.mail import send_mail
+from django.conf import settings
 # imports
 
 # @receiver(post_save , sender=Profile)
@@ -14,6 +16,15 @@ def create_profile(sender , instance , created , **kwargs) :
             email=user.email,
             name=user.first_name,
         )
+        # subject = "WELCOME"
+        # body = "we are glad that you logged in"
+        # send_mail(
+        #     subject,
+        #     body,
+        #     settings.EMAIL_HOST_USER,
+        #     [profile.email],
+        #     fail_silently=False
+        # )
 
 def updateUser(sender , instance , created , **kwargs) :
     profile = instance
