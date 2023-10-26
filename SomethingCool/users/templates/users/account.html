@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% block content %}
+{% load static %}
 <body>
   <!-- Main Section -->
   <main class="settingsPage profile my-md">
@@ -13,26 +14,36 @@
               <h2 class="dev__name">{{profile.name}}</h2>
               <p class="dev__title">@{{profile.username}}</p>
               <p class="dev__title">{{profile.short_intro}}</p>
+              {% if profile.location %}
               <p class="dev__location">Located in {{profile.location}}</p>
+              {% endif %}
               <ul class="dev__social">
                 {% if profile.social_github %}
                 <li>
-                  <a title="Github" href={{profile.social_github}} target="_blank"><i class="im im-github"></i></a>
+                <a href= {{profile.social_github}} class="header__logo">
+                  <img src={% static 'images/github.svg' %} alt="FuckSearchs Logo" />
+                </a>
                 </li>
                 {% endif %}
                 {% if profile.social_twitter %}
                 <li>
-                  <a title="Twitter" href={{profile.social_twitter}} target="_blank"><i class="im im-twitter"></i></a>
+                  <a href= {{profile.social_twitter}} class="header__logo">
+                    <img src={% static 'images/twitter.svg' %} alt="FuckSearchs Logo" />
+                  </a>
                 </li>
                 {% endif %}
                 {% if profile.social_linkedin %}
                 <li>
-                  <a title="LinkedIn" href={{profile.social_linkedin}} target="_blank"><i class="im im-linkedin"></i></a>
+                  <a href= {{profile.social_linkedin}} class="header__logo">
+                    <img src={% static 'images/linkedin.svg' %} alt="FuckSearchs Logo" />
+                  </a>                
                 </li>
                 {% endif %}
-                {% if profile.social_website %}
+                {% if profile.social_youtube %}
                 <li>
-                  <a title="Personal Website" href={{profile.social_website}} target="_blank"><i class="im im-globe"></i></a>
+                  <a href= {{profile.social_youtube}} class="header__logo">
+                  <img src={% static 'images/youtube.svg' %} alt="FuckSearchs Logo" />
+                </a>        
                 </li>
                 {% endif %}
               </ul>

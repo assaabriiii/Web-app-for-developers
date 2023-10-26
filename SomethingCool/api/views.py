@@ -8,18 +8,8 @@ from project.models import project
 
 @api_view(['GET'])
 def getRoutes(request) : 
-    routes = [
-        {"GET" : "api/project"},
-        {"GET" : "api/project/id"},
-        {"POST" : "api/project/id/vote"},
-        {"POST" : "api/users/token"},
-        {"POST" : "api/users/token/refresh"}
-    ]
-    return Response(routes)
+    return Response(None)
 
 @api_view(['GET'])
 def getProjects(request) : 
-    projects = project.objects.all()
-    serializer = ProjectSerializer(projects , many=True) 
-    
-    return Response(serializer.data)
+    return Response(None)

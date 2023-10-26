@@ -1,10 +1,10 @@
 :root {
-  --color-sub: #3a3a95;
+  --color-sub: #000000;
 }
 
 .btn--sub {
   /* background-color: var(--color-sub-light); */
-  background-color: rgb(234, 145, 12);
+  background-color: rgb(73, 45, 2);
 }
 
 .card {
@@ -664,7 +664,7 @@ img {
   left: 0;
   bottom: 0;
   right: 0;
-  background: url(../images/background.jpg);
+  background: url(../images/backgroundss.png);
 }
 
 .auth > .card {

@@ -57,6 +57,7 @@ def register_user(request) :
         
         if form.is_valid() :
             user = form.save(commit=False)
+            user.Name = str(user.first_name) + " " + str(user.last_name)
             user.username = user.username.lower()
             user.save()
             

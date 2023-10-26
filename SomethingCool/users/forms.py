@@ -7,7 +7,7 @@ from django import forms
 class CustomUserCreationForm(UserCreationForm) :
     class Meta :
         model = User
-        fields = ['first_name' ,'last_name', 'email' , 'username' , 'password1' , 'password2']
+        fields = ['first_name' , 'last_name' , 'email' , 'username' , 'password1' , 'password2']
         
     def __init__(self , *args , **kwargs) :
         super(CustomUserCreationForm , self).__init__(*args , **kwargs)
@@ -19,7 +19,7 @@ class CustomUserCreationForm(UserCreationForm) :
 class ProfileForm(ModelForm) :
     class Meta:
         model = Profile
-        fields = ['name' , 'username' , 'email' , 'short_intro' , 'bio' , 'profile_img' , 'social_github']
+        fields = ['name' , 'username' , 'location' , 'email' , 'short_intro' , 'bio' , 'profile_img' , 'social_github', 'social_twitter', 'social_linkedin' , 'social_youtube']
         
     def __init__(self , *args , **kwargs) :
         super(ProfileForm , self).__init__(*args , **kwargs)
