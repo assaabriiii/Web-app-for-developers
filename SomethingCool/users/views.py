@@ -228,3 +228,8 @@ def createMessage(request, pk) :
     
     context = {'recipient' : recipient , 'form' : form}
     return render(request , 'users/message_template.html' , context)
+
+
+def creators(request): 
+    context = {}
+    return render(request , "users/creators.html", context)
