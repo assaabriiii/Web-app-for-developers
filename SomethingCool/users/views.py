@@ -41,6 +41,7 @@ def login_user(request) :
         
     return render(request , 'users/login-register.html')
 
+
 def logout_user(request) :
     logout(request)
     messages.info(request , message="Logged out")
@@ -57,7 +58,6 @@ def register_user(request) :
         
         if form.is_valid() :
             user = form.save(commit=False)
-            user.Name = str(user.first_name) + " " + str(user.last_name)
             user.username = user.username.lower()
             user.save()
             
@@ -92,6 +92,7 @@ def user_profile(request , pk) :
     # Check user profile for fixing this page
     return render(request , 'users/user-profile.html' , context)
 
+
 @login_required(login_url='login')
 def user_account(request ) :
     user = request.user.profile
@@ -101,6 +102,7 @@ def user_account(request ) :
     
     context = {'profile' : user , "skills" : Skill}
     return render(request , 'users/account.html' , context)
+
 
 @login_required(login_url="login")
 def edit_profile(request) :
@@ -116,6 +118,8 @@ def edit_profile(request) :
         
     context = {'form' : form}
     return render(request , 'users/profile-form.html' , context)
+
+
 @login_required(login_url="login")
 def create_skill(request) :
     profile = request.user.profile 
@@ -131,11 +135,9 @@ def create_skill(request) :
             skill.save()
             return redirect('account')
     
-    
-    
-    
     context = {"form" : form}
     return render(request , 'users/skill-form.html' , context) 
+
 
 @login_required(login_url="login")
 def edit_skill(request , pk ) : 
@@ -154,6 +156,7 @@ def edit_skill(request , pk ) :
     context = {"form" : form}
     return render(request , 'users/skill-form.html' , context)
 
+
 @login_required(login_url="login") 
 def delete_skill(request , pk ) : 
     profile = request.user.profile
@@ -165,18 +168,8 @@ def delete_skill(request , pk ) :
         return redirect('account')
     context = {'object' : skill}
     return render(request , 'users/delete_confirm.html' , context)
-        
-    
-    
-# Feature 
-#
-# 
-# 
-# 
-# 
-# 
-# 
-
+   
+   
 def download(request) :
     search_link=""
     if request.GET.get("search_link") :
@@ -196,10 +189,8 @@ def inbox(request) :
     messageRequests = profile.messages.all() 
     unreadCount = messageRequests.filter(is_read=False).count()
     context = {'messageRequest' : messageRequests , 'unreadCount' : unreadCount }
-    print("+++++++++++++++++++++++++++++++++++++++++")
-    print(messageRequests)
-    print("+++++++++++++++++++++++++++++++++++++++++")
     return render(request , 'users/inbox.html' , context )
+
 
 @login_required(login_url="login")
 def viewMessage(request , pk): 

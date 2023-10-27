@@ -11,35 +11,42 @@
           <div class="card text-center">
             <div class="card__body dev">
               <img class="avatar avatar--xl" src={{user.profile_img.url}} />
-              <h2 class="dev__name"> {{user.name}} </h2>
+              <h2 class="dev__name"> {{user.name}} {{user.last_name}}</h2>
               <p class="dev__title">@{{user.username}}</p>
-              <p class="dev__title">@{{user.short_intro}}</p>
+              {% if user.short_intro %}
+              <p class="dev__title">{{user.short_intro}}</p>
+              {% endif %}
+              {% if user.location %}
               <p class="dev__location">Located in {{user.location}}</p>
+              {% endif %}
+              <p class="dev__location">Located in {{user.create_date}}</p>
+
+
               <ul class="dev__social">
                 {% if user.social_github %}
                 <li>
-                  <a href= {{user.social_github}} class="header__logo">
+                  <a href="https://{{user.social_github}}" class="header__logo">
                     <img src={% static 'images/github.svg' %} alt="FuckSearchs Logo" />
                   </a>                
                 </li>
                 {% endif %}
                 {% if user.social_twitter %}
                 <li>
-                  <a href= {{user.social_twitter}} class="header__logo">
+                  <a href= "https://{{user.social_twitter}}" class="header__logo">
                     <img src={% static 'images/twitter.svg' %} alt="FuckSearchs Logo" />
                   </a>                               
                 </li>
                 {% endif %}
                 {% if user.social_linkedin %}
                 <li>
-                  <a href= {{user.social_linkedin}} class="header__logo">
+                  <a href= "https://{{user.social_linkedin}}" class="header__logo">
                     <img src={% static 'images/linkedin.svg' %} alt="FuckSearchs Logo" />
                   </a>                                
                 </li>
                 {% endif %}
                 {% if user.social_youtube %}
                 <li>
-                  <a href= {{user.social_youtube}} class="header__logo">
+                  <a href= "https://{{user.social_youtube}}" class="header__logo">
                     <img src={% static 'images/youtube.svg' %} alt="FuckSearchs Logo" />
                   </a>                                
                 </li>

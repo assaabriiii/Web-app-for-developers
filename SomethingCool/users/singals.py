@@ -15,6 +15,7 @@ def create_profile(sender , instance , created , **kwargs) :
             username=user.username,
             email=user.email,
             name=user.first_name,
+            last_name = user.last_name
         )
         # subject = "WELCOME"
         # body = "we are glad that you logged in"
