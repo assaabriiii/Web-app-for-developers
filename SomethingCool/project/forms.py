@@ -1,4 +1,4 @@
-from django.forms import ModelForm , widgets
+from django.forms import ModelForm
 from .models import project , review 
 from django import forms
 

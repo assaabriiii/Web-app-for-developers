@@ -1,8 +1,7 @@
-from django.forms import ModelForm , widgets
+from django.forms import ModelForm 
 from .models import Message, Profile, Skill
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm 
-from django import forms
 
 class CustomUserCreationForm(UserCreationForm) :
     class Meta :

@@ -1,12 +1,6 @@
-from email.policy import default
-from enum import unique
-from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
-from django.db.models.signals import post_save,post_delete
-from location_field.models.plain import PlainLocationField
-from django.dispatch import receiver
 # Create your models here.
 
 class Profile(models.Model) :

@@ -3,7 +3,6 @@ from .forms import ProjectForm , ReviewForm
 from .models import project 
 from django.contrib.auth.decorators import login_required
 from .utils import project_search , paginator_project
-import requests
 
 # Create your views here.
 def projects(request) :
