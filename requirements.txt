@@ -1,0 +1,11 @@
+asgiref==3.8.1
+Django==5.0.6
+django-location-field==2.7.3
+djangorestframework==3.15.1
+djangorestframework-simplejwt==5.3.1
+pillow==10.3.0
+PyJWT==2.8.0
+pytz==2024.1
+six==1.16.0
+sqlparse==0.5.0
+whitenoise==6.6.0
